@@ -2,8 +2,8 @@ from lm_eval.base import Task, rf
 from lm_eval import metrics
 from sentence_transformers import SentenceTransformer, util
 
-dim = 384
-st = SentenceTransformer('sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2')
+#dim = 384
+#st = SentenceTransformer('sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2')
 
 class taide_dbpedia(Task):
     VERSION = 0
@@ -48,7 +48,6 @@ class taide_dbpedia(Task):
         ansEmbedding = st.encode(doc["answer"])
         resultEmbedding = st.encode(results)
         score = util.cos_sim(ansEmbedding, resultEmbedding)[0][0].item()
-        print(type(score))
         
         return {"similarity": score}
 

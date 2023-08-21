@@ -60,7 +60,7 @@ from . import xwinograd
 from . import pawsx
 from . import xnli
 from . import mgsm
-from .TAIDE import taide_dbpedia
+from .TAIDE import taide
 
 ########################################
 # Translation tasks
@@ -326,7 +326,7 @@ TASK_REGISTRY = {
     **pawsx.construct_tasks(),
     **xnli.construct_tasks(),
     **mgsm.construct_tasks(),
-    "taide_dbpedia": taide_dbpedia.taide_dbpedia,
+    **taide.construct_tasks(),
 }
 
 
