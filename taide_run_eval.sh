@@ -6,7 +6,7 @@ limit="10"
 python3 main.py \
   --model hf-causal-experimental \
   --model_args pretrained=$modelPath,use_accelerate=True \
-  --tasks taide_piqa_en2tw \
+  --tasks taide_ai2_arc_tw \
   --device cuda:0 \
   --num_fewshot 3 \
   --description_dict_path desc.json \
