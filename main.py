@@ -35,6 +35,8 @@ def parse_args():
 
 
 def main():
+    import sys
+    print(sys.argv)
     args = parse_args()
 
     assert not args.provide_description  # not implemented

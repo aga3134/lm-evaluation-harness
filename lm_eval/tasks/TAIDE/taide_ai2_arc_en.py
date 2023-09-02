@@ -37,14 +37,19 @@ class taide_ai2_arc_en(MultipleChoiceTask):
 
     def _process_doc(self, doc):
         ch = json.loads(doc["choices"].replace("'","\""))
-        text = ch["text"]
+        choices = ch["text"]
         label = ch["label"]
         ans = doc["answerKey"]
+
         gold = label.index(ans)
+        goal = doc["question"]
+        for (i,c) in enumerate(choices):
+            choices[i] = f"({label[i]}) {c}"
+            goal += f"\n{choices[i]}"
 
         out_doc = {
-            "goal": doc["question"],
-            "choices": text,
+            "goal": goal,
+            "choices": choices,
             "gold": gold,
         }
         return out_doc
