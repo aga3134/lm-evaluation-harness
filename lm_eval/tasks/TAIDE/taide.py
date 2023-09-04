@@ -7,6 +7,8 @@ from .taide_siqa_en import taide_siqa_en
 from .taide_siqa_tw import taide_siqa_tw
 from .taide_ai2_arc_en import taide_ai2_arc_en
 from .taide_ai2_arc_tw import taide_ai2_arc_tw
+from .taide_boolq_en import taide_boolq_en
+from .taide_boolq_tw import taide_boolq_tw
 
 taskClass = {
   "taide_dbpedia": taide_dbpedia,
@@ -18,6 +20,8 @@ taskClass = {
   "taide_siqa_tw": taide_siqa_tw,
   "taide_ai2_arc_en": taide_ai2_arc_en,
   "taide_ai2_arc_tw": taide_ai2_arc_tw,
+  "taide_boolq_en": taide_boolq_en,
+  "taide_boolq_tw": taide_boolq_tw,
 }
 
 def construct_tasks():
