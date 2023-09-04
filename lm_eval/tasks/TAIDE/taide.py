@@ -11,6 +11,8 @@ from .taide_boolq_en import taide_boolq_en
 from .taide_boolq_tw import taide_boolq_tw
 from .taide_openbookqa_en import taide_openbookqa_en
 from .taide_openbookqa_tw import taide_openbookqa_tw
+from .taide_truthful_qa_mc_en import taide_truthful_qa_mc_en
+from .taide_truthful_qa_mc_tw import taide_truthful_qa_mc_tw
 
 taskClass = {
   "taide_dbpedia": taide_dbpedia,
@@ -26,6 +28,8 @@ taskClass = {
   "taide_boolq_tw": taide_boolq_tw,
   "taide_openbookqa_en": taide_openbookqa_en,
   "taide_openbookqa_tw": taide_openbookqa_tw,
+  "taide_truthful_qa_mc_en": taide_truthful_qa_mc_en,
+  "taide_truthful_qa_mc_tw": taide_truthful_qa_mc_tw,
 }
 
 def construct_tasks():
