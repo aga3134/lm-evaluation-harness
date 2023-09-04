@@ -2,6 +2,7 @@ from lm_eval.base import MultipleChoiceTask
 from datasets import load_dataset
 import os
 import json
+import ast
 
 class taide_ai2_arc_en(MultipleChoiceTask):
     VERSION = 0
@@ -36,7 +37,7 @@ class taide_ai2_arc_en(MultipleChoiceTask):
             return map(self._process_doc, self.dataset["test"])
 
     def _process_doc(self, doc):
-        ch = json.loads(doc["choices"].replace("'","\""))
+        ch = ast.literal_eval(doc["choices"])
         choices = ch["text"]
         label = ch["label"]
         ans = doc["answerKey"]

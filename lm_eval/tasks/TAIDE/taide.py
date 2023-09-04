@@ -9,6 +9,8 @@ from .taide_ai2_arc_en import taide_ai2_arc_en
 from .taide_ai2_arc_tw import taide_ai2_arc_tw
 from .taide_boolq_en import taide_boolq_en
 from .taide_boolq_tw import taide_boolq_tw
+from .taide_openbookqa_en import taide_openbookqa_en
+from .taide_openbookqa_tw import taide_openbookqa_tw
 
 taskClass = {
   "taide_dbpedia": taide_dbpedia,
@@ -22,6 +24,8 @@ taskClass = {
   "taide_ai2_arc_tw": taide_ai2_arc_tw,
   "taide_boolq_en": taide_boolq_en,
   "taide_boolq_tw": taide_boolq_tw,
+  "taide_openbookqa_en": taide_openbookqa_en,
+  "taide_openbookqa_tw": taide_openbookqa_tw,
 }
 
 def construct_tasks():

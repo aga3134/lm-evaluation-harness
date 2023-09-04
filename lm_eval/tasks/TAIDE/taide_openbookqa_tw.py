@@ -4,11 +4,11 @@ import os
 import json
 import ast
 
-class taide_ai2_arc_tw(MultipleChoiceTask):
+class taide_openbookqa_tw(MultipleChoiceTask):
     VERSION = 0
 
     def download(self, data_dir=None, cache_dir=None, download_mode=None):
-        self.dataset = load_dataset("csv", data_files={"validation":["lm_eval/datasets/TAIDE/ai2_arc_ARC-Challenge_validation_zh-tw_gc.csv"]})
+        self.dataset = load_dataset("csv", data_files={"validation":["lm_eval/datasets/TAIDE/openbookqa_main_validation_zh-tw_gc.csv"]})
         print(self.dataset)
 
     def has_training_docs(self):
@@ -43,7 +43,7 @@ class taide_ai2_arc_tw(MultipleChoiceTask):
         ans = doc["answerKey"]
 
         gold = label.index(ans)
-        goal = doc["trans_question"]
+        goal = doc["trans_question_stem"]
         for (i,c) in enumerate(choices):
             choices[i] = f"({label[i]}) {c}"
             goal += f"\n{choices[i]}"
