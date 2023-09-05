@@ -1,13 +1,29 @@
-task="taide_ai2_arc_tw"
-if [ -n "$1" ]
-  then
-    task=$1
-fi
+task="taide_piqa_tw"
+fewshot=3
+output="./output"
+desc="desc.json"
+
+#Read the argument values
+while [[ "$#" -gt 0 ]]
+  do
+    case $1 in
+      --task) task="$2"; shift;;
+      --fewshot) fewshot="$2"; shift;;
+      --output) output="$2"; shift;;
+      --desc) desc="$2"; shift;;
+    esac
+    shift
+done
+
+echo "task=$task"
+echo "fewshot=$fewshot"
+echo "output=$output"
+echo "desc=$desc"
 
 python3 -m scripts.write_out \
-  --output_base_path ./output \
+  --output_base_path $output \
   --tasks $task \
   --sets val \
-  --num_fewshot 3 \
+  --num_fewshot $fewshot \
   --num_examples 5 \
-  --description_dict_path desc.json
+  --description_dict_path $desc
