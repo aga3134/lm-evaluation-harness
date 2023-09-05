@@ -1,14 +1,19 @@
 from lm_eval.base import Task, rf
 from lm_eval import metrics
 from sentence_transformers import SentenceTransformer, util
+import jieba
 
-#dim = 384
-#st = SentenceTransformer('sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2')
 
 class taide_dbpedia(Task):
     VERSION = 0
     DATASET_PATH = "TLLM/dbpedia_taiwan"
     DATASET_NAME = None
+
+    def __init__(self):
+        super().__init__()
+        self.dim = 384
+        self.st = SentenceTransformer('sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2')
+
 
     def has_training_docs(self):
         return True
@@ -34,25 +39,39 @@ class taide_dbpedia(Task):
             return self.dataset["test"]
 
     def doc_to_text(self, doc):
-        return "Q: "+doc["question"]
+        return doc["question"]
 
     def doc_to_target(self, doc):
         target = doc["answer"]
-        return " A: " + target
+        return " " + target
 
     def construct_requests(self, doc, ctx):
         return rf.greedy_until(ctx, {"until": ["\n"]})
 
     def process_results(self, doc, results):
-        print(results)
-        ansEmbedding = st.encode(doc["answer"])
-        resultEmbedding = st.encode(results)
+        #similarity
+        ansEmbedding = self.st.encode(doc["answer"])
+        resultEmbedding = self.st.encode(results)
         score = util.cos_sim(ansEmbedding, resultEmbedding)[0][0].item()
+
+        #bleu score
+        ref = [" ".join(jieba.cut(doc["answer"].strip()))]
+        res = [" ".join(jieba.cut(results[0].strip()))]
+        bleu = metrics.bleu([(ref, res)])
         
-        return {"similarity": score}
+        return {
+            "similarity": score,
+            "bleu": bleu,
+        }
 
     def aggregation(self):
-        return {"similarity": metrics.mean}
+        return {
+            "similarity": metrics.mean,
+            "bleu": metrics.mean,
+        }
 
     def higher_is_better(self):
-        return {"similarity": True}
+        return {
+            "similarity": True,
+            "bleu": True,
+        }
