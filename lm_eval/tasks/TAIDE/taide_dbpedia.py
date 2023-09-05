@@ -54,20 +54,19 @@ class taide_dbpedia(Task):
         resultEmbedding = self.st.encode(results)
         score = util.cos_sim(ansEmbedding, resultEmbedding)[0][0].item()
 
-        #bleu score
+        #中文需要斷詞
         ref = [" ".join(jieba.cut(doc["answer"].strip()))]
         res = [" ".join(jieba.cut(results[0].strip()))]
-        bleu = metrics.bleu([(ref, res)])
         
         return {
             "similarity": score,
-            "bleu": bleu,
+            "bleu": (ref,res),  #bleu score是針對整個corpus計算，所以留到後面的aggregation再算
         }
 
     def aggregation(self):
         return {
             "similarity": metrics.mean,
-            "bleu": metrics.mean,
+            "bleu": metrics.bleu,
         }
 
     def higher_is_better(self):
