@@ -17,6 +17,7 @@ from .taide_winogrande_en import taide_winogrande_en
 from .taide_winogrande_tw import taide_winogrande_tw
 from .taide_logiqa_en import taide_logiqa_en
 from .taide_logiqa_tw import taide_logiqa_tw
+from .taide_cna_summary import taide_cna_summary
 
 taskClass = {
   "taide_dbpedia": taide_dbpedia,
@@ -38,6 +39,7 @@ taskClass = {
   "taide_winogrande_tw": taide_winogrande_tw,
   "taide_logiqa_en": taide_logiqa_en,
   "taide_logiqa_tw": taide_logiqa_tw,
+  "taide_cna_summary": taide_cna_summary,
 }
 
 def construct_tasks():
