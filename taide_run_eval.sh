@@ -3,8 +3,8 @@ set -f
 
 task="taide_*"
 model="opt-1.3b_stage2--b-2048--e7_ft-e6"
-fewshot=3
-limit="10"
+fewshot=0
+limit=100
 
 #Read the argument values
 while [[ "$#" -gt 0 ]]
@@ -19,7 +19,8 @@ while [[ "$#" -gt 0 ]]
 done
 
 modelPath="../${model}/"
-outputPath="output/${model}/"
+outputPath="output/${model}/taide_summary.json"
+outputBasePath="output/${model}/"
 
 echo "task=$task"
 echo "model=$model"
@@ -27,6 +28,7 @@ echo "fewshot=$fewshot"
 echo "limit=$limit"
 echo "modelPath=$modelPath"
 echo "outputPath=$outputPath"
+echo "outputBasePath=$outputBasePath"
 
 python3 main.py \
   --model hf-causal-experimental \
@@ -36,5 +38,6 @@ python3 main.py \
   --num_fewshot $fewshot \
   --description_dict_path desc.json \
   --write_out \
-  --output_base_path $outputPath \
+  --output_path $outputPath \
+  --output_base_path $outputBasePath \
   --limit $limit

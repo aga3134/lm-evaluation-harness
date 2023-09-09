@@ -39,7 +39,7 @@ class taide_dbpedia(Task):
             return self.dataset["test"]
 
     def doc_to_text(self, doc):
-        return doc["question"]
+        return "請簡答下列問題:\n"+doc["question"]+"\n答案:\n"
 
     def doc_to_target(self, doc):
         target = doc["answer"]

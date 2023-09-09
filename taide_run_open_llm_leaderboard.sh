@@ -1,5 +1,5 @@
 model="opt-1.3b_stage2--b-2048--e7_ft-e6"
-limit="10"
+limit=100
 
 #Read the argument values
 while [[ "$#" -gt 0 ]]
@@ -12,12 +12,12 @@ while [[ "$#" -gt 0 ]]
 done
 
 modelPath="../${model}/"
-outputPath="output/${model}/"
+outputBasePath="output/${model}/"
 
 echo "model=$model"
 echo "limit=$limit"
 echo "modelPath=$modelPath"
-echo "outputPath=$outputPath"
+echo "outputBasePath=$outputBasePath"
 
 python3 main.py \
   --model hf-causal-experimental \
@@ -25,7 +25,8 @@ python3 main.py \
   --tasks arc_challenge \
   --batch_size 2 \
   --write_out \
-  --output_base_path $outputPath \
+  --output_path "${outputBasePath}/arc_challenge.json" \
+  --output_base_path $outputBasePath \
   --device cuda \
   --num_fewshot 25 \
   --limit $limit \
@@ -36,7 +37,8 @@ python3 main.py \
   --tasks hellaswag \
   --batch_size 2 \
   --write_out \
-  --output_base_path $outputPath \
+  --output_path "${outputBasePath}/hellaswag.json" \
+  --output_base_path $outputBasePath \
   --device cuda \
   --num_fewshot 10 \
   --limit $limit \
@@ -47,7 +49,8 @@ python3 main.py \
   --tasks hendrycksTest-* \
   --batch_size 2 \
   --write_out \
-  --output_base_path $outputPath \
+  --output_path "${outputBasePath}/hendrycksTest.json" \
+  --output_base_path $outputBasePath \
   --device cuda \
   --num_fewshot 5 \
   --limit $limit \
@@ -58,6 +61,7 @@ python3 main.py \
   --tasks truthfulqa_mc \
   --batch_size 2 \
   --write_out \
-  --output_base_path $outputPath \
+  --output_path "${outputBasePath}/truthfulqa_mc.json" \
+  --output_base_path $outputBasePath \
   --device cuda \
   --limit $limit \
