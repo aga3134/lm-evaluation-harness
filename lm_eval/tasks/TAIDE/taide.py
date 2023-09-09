@@ -22,6 +22,9 @@ from .taide_hanlin_mcq import taide_hanlin_mcq
 from .taide_reading_comprehension import taide_reading_comprehension
 from .taide_dictionary_word2meaning import taide_dictionary_word2meaning
 from .taide_dictionary_meaning2word import taide_dictionary_meaning2word
+from .taide_task_classify import taide_task_classify
+from .taide_topic_classify import taide_topic_classify
+from .taide_answer_classify import taide_answer_classify
 
 
 taskClass = {
@@ -49,6 +52,9 @@ taskClass = {
   "taide_reading_comprehension": taide_reading_comprehension,
   "taide_dictionary_word2meaning": taide_dictionary_word2meaning,
   "taide_dictionary_meaning2word": taide_dictionary_meaning2word,
+  "taide_task_classify": taide_task_classify,
+  "taide_topic_classify": taide_topic_classify,
+  "taide_answer_classify": taide_answer_classify,
 }
 
 def construct_tasks():
