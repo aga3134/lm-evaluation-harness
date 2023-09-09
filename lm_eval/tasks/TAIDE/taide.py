@@ -15,6 +15,8 @@ from .taide_truthful_qa_mc_en import taide_truthful_qa_mc_en
 from .taide_truthful_qa_mc_tw import taide_truthful_qa_mc_tw
 from .taide_winogrande_en import taide_winogrande_en
 from .taide_winogrande_tw import taide_winogrande_tw
+from .taide_logiqa_en import taide_logiqa_en
+from .taide_logiqa_tw import taide_logiqa_tw
 
 taskClass = {
   "taide_dbpedia": taide_dbpedia,
@@ -34,6 +36,8 @@ taskClass = {
   "taide_truthful_qa_mc_tw": taide_truthful_qa_mc_tw,
   "taide_winogrande_en": taide_winogrande_en,
   "taide_winogrande_tw": taide_winogrande_tw,
+  "taide_logiqa_en": taide_logiqa_en,
+  "taide_logiqa_tw": taide_logiqa_tw,
 }
 
 def construct_tasks():
