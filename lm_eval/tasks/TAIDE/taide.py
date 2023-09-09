@@ -20,6 +20,9 @@ from .taide_logiqa_tw import taide_logiqa_tw
 from .taide_cna_summary import taide_cna_summary
 from .taide_hanlin_mcq import taide_hanlin_mcq
 from .taide_reading_comprehension import taide_reading_comprehension
+from .taide_dictionary_word2meaning import taide_dictionary_word2meaning
+from .taide_dictionary_meaning2word import taide_dictionary_meaning2word
+
 
 taskClass = {
   "taide_dbpedia": taide_dbpedia,
@@ -44,6 +47,8 @@ taskClass = {
   "taide_cna_summary": taide_cna_summary,
   "taide_hanlin_mcq": taide_hanlin_mcq,
   "taide_reading_comprehension": taide_reading_comprehension,
+  "taide_dictionary_word2meaning": taide_dictionary_word2meaning,
+  "taide_dictionary_meaning2word": taide_dictionary_meaning2word,
 }
 
 def construct_tasks():
